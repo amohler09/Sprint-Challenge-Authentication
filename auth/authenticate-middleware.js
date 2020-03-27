@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
     jwt.verify(authorization, jwtSecret, (err, decodedToken) => {
       if (err) {
         res.status(401).json({
-          you: 'shall not pass!'
+          message: "No credentials provided"
         });
       } else {
         req.decodedToken = decodedToken;
@@ -25,8 +25,8 @@ module.exports = (req, res, next) => {
       }
     });
   } else {
-    res.status(400).json({
-      message: "No credentials provided"
+    res.status(401).json({
+      you: 'shall not pass!'
     });
   }
 };
