@@ -8,12 +8,10 @@ describe('jokes-router', () => {
         });
 
 
-        it('returns 401 Error if user is not authorized', () => {
-            return request(server)
-                .get('/api/jokes')
-                .then(res => {
-                    expect(res.status).toBe(401);
-                });
+        it('returns 401 Error if user is not authorized', async () => {
+            const res = await request(server)
+                .get('/api/jokes');
+            expect(res.status).toBe(401);
         });
 
 
@@ -21,8 +19,8 @@ describe('jokes-router', () => {
             const res = await request(server)
                 .post('/api/auth/register')
                 .send({
-                    username: 'Testinggasdsdfsdfsdffsdasdgff',
-                    password: 'pasdasdsdsdfssdsdfasdds'
+                    username: 'Testinggasdsdfsdfsdffsdaddsdgff',
+                    password: 'pasdasdsdsdfssdsdddfasdds'
                 });
 
             expect(res.status).toBe(201);
