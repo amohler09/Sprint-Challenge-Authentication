@@ -1,6 +1,5 @@
 const request = require("supertest");
 const server = require("../api/server");
-const Users = require("../users/users-model");
 
 describe("auth-router", () => {
   it("runs test suite", () => {
@@ -28,12 +27,12 @@ describe("POST api/auth/login", () => {
 
 describe('POST api/auth/register', () => {
   let data = { //dont forget to change EVERY TIME
-    "id": "105",
-    "username": "test3",
+    "id": "115",
+    "username": "test4",
     "password": "test1234"
   };
 
-  it('responds with 201 created', done => {
+  it('returns 201 created status on successful registration', done => {
     request(server)
       .post('/api/auth/register')
       .send(data)
